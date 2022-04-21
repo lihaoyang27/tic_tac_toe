@@ -15,7 +15,19 @@ const squareStyle = {
   'justifyContent': 'center',
   'alignItems': 'center',
   'fontSize': '20px',
-  'color': 'white'
+  'color': 'black'
+}
+
+const squareStyleColor = {
+  'width':'60px',
+  'height':'60px',
+  'backgroundColor': '#ddd',
+  'margin': '4px',
+  'display': 'flex',
+  'justifyContent': 'center',
+  'alignItems': 'center',
+  'fontSize': '20px',
+  'color': 'red'
 }
 
 const boardStyle = {
@@ -51,7 +63,7 @@ const buttonStyle = {
   'fontSize': '16px',
 }
 
-function Square({value, handleClick}) {
+function Square({value, handleClick, }) {
 
   return (
       <div
@@ -65,12 +77,12 @@ function Square({value, handleClick}) {
 function Board({arr, handleClick, squares, resetGame, winner, xNext, step}) {
 
   const renderSquare = (i) => {
-    let color = false
+
     if( arr && arr.length === 3){
-      color = arr.includes(i) ? true : false
+
     }
     return(
-        <Square key={i} color={color} value={squares[i]} handleClick={() => {
+        <Square key={i}  value={squares[i]} handleClick={() => {
           handleClick(i)
 
         }}/>
@@ -118,7 +130,7 @@ function Game() {
   const [step, setStep] = useState(0)
   const [xNext, setXNext] = useState(true)
   const [arrPosition, setArrPosition] = useState([])
-  const [arr, setArr] =useState([])
+
   const [history, setHistory] = useState([
     {
       squares: Array(9).fill(null)
@@ -182,7 +194,7 @@ function Game() {
     setStep(0)
     setXNext(true)
     setArrPosition([])
-    setArr([])
+    // setArr([])
     setHistory([
       {
         squares: Array(9).fill(null)
@@ -204,6 +216,7 @@ function Game() {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+
         return squares[a]; }
     }
     return null;
@@ -214,7 +227,7 @@ function Game() {
       <div className="game">
 
         <div className="game-board">
-          <Board arr={arr} squares={current.squares} handleClick={(i)=>handleClick(i)}
+          <Board squares={current.squares} handleClick={(i)=>handleClick(i)}
                  resetGame={()=>resetGame()} winner={calculateWinner(current.squares)}
                  xNext={xNext} step={step}
 
