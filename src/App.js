@@ -74,13 +74,10 @@ function Square({value, handleClick, }) {
   );
 }
 
-function Board({arr, handleClick, squares, resetGame, winner, xNext, step}) {
+function Board({ handleClick, squares, resetGame, winner, xNext, step}) {
 
   const renderSquare = (i) => {
 
-    if( arr && arr.length === 3){
-
-    }
     return(
         <Square key={i}  value={squares[i]} handleClick={() => {
           handleClick(i)
